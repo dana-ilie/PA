@@ -1,0 +1,46 @@
+# About
+Ilie Dana Maria, 324CA
+June 2022
+
+There are three problems solved in the following files:
+curatare.cpp, fortificatii.cpp, curse.cpp
+-------------------------------------------------------------------------------
+
+# Implementation
+
+## curatare.cpp
+The file "curatare.cpp" contains the implementation of the first problem, which
+uses backtracking to solve the problem. The function "min_dist" is used in
+order to find the minimum distance between each dirty square and the minimum
+distance between each square with a robot and each dirty square.
+The "min_dist" function is a slightly modified version of a BFS algorithm.
+
+Complexity: O((r * d * n * m) + (d^2 * n * m) + (r! * d^(d - 1));
+where:
+r = number of robots
+d = number of dirty squares
+n = number of rows
+m = number of columns
+
+Refference for min_dist:
+https://www.geeksforgeeks.org/shortest-distance-two-cells-matrix-grid/
+
+## fortificatii.cpp
+The file "fortificatii.cpp" contains the implementation of the second problem,
+which uses dijkstra's algorithm to solve the problem and find all the minimum
+distances in order to be able to place the fortifications so that they delay
+the barbarians as much as possible.
+
+Complexity: O(m * logn + b * b');
+where
+b = number of barbarians
+b' number of neighbours of barbarians
+
+## curse.cpp
+The file "curse.cpp" contains the implementation of the third problem, which
+uses toposort algorithm in order to solve the problem.
+I have used an auxilary vector in order to keep track of the changes between two consecutive trainings.
+
+I have used as a refference for the toposort algorithm laboratory 7.
+
+Complexity: O((a - 1) * m)

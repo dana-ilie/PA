@@ -1,0 +1,95 @@
+# About
+Ilie Dana Maria, 324CA
+April 2022
+
+There are four problems solved in the following files: walsh.cpp, statistics.cpp,
+prinel.cpp and crypto.cpp.
+-------------------------------------------------------------------------------
+
+# Implementation
+
+## walsh.cpp
+The "walsh.cpp" file contains the implementation of the first problem, which
+uses a "Divide et Impera" strategy in order to solve the problem. Therefore,
+the recursive function "find_value" is used in order to calculate only the
+requested value, without generating the entire matrix.
+
+Complexity: O(n)
+
+## statistics.cpp
+The "statistics.cpp" file contains the implementation of the second problem,
+which uses a "Greedy" strategy in order to solve the problem by finding
+a solution for every letter in the alphabet, then choosing the optimal one.
+(The one with the most number of words).
+
+Therefore, for each letter of the alphabet(a-z), the "dominnance" of the letter
+in each word is calculated and the words with negative dominance are stored in
+a vector.
+The dominnace of a letter is calculated as follows:
+d = 2 * (nr. of appearances of the letter in the word) - length of the word. 
+Then, the resulted vector is sorted.
+
+After that, words are added to the solution from the vector as long as the 
+global dominnance is kept positive.
+
+In the end, the solution with the most number of words is chosen.
+
+Complexity: O(n)
+
+## prinel.cpp
+The "prinel.cpp" file contains the implementation of the third problem, which
+uses Dynamic Programming to generate the solution.
+This problem is similar to the knapsack problem, implemented during the DP1 
+laboratory. 
+The number of points obtained if a[i] = target[i] is equivalent to the value
+(or price) of an item in the knapsack. The number of operations needed to
+obtain target[i] is equivalent to the cost(or weight) of an item in the knapsack.
+
+In order to calculate the cost of each transformation (the number of operations
+needed to obtain target[i]),the function "count_operations" is used. The
+function uses bfs to determine the shortest path (smallest cost) from a[i] to
+target[i]. In order to obtain a more efficient solution, I applied the function
+to the highest target value and stored the intermediate results in order to
+avoid recalculating the same values.
+
+Complexity: O(n)
+
+Reference:https://www.geeksforgeeks.org/minimum-number-of-moves-to-make-m-and-n-equal-by-repeatedly-adding-any-divisor-of-number-to-itself-except-1-and-the-number/
+
+
+## crypto.cpp
+The "crypto.cpp" file contains the implementation of the fourth problem, which
+uses Dynamic Programming to generate the solution.
+I have used a frequency vector that stores values as follows:
+Let's say we have the key "capra?acra?" and the substrig "capra".
+
+frequency:   0   1   2     3     4       5
+            |  |   |    |     |      |       |
+             [] [c] [ca] [cap] [capr] [capra]
+
+frequency[0] = number of [] substrings that can be created
+frequency[1] = number of [c] substrings that can be created
+frequency[2] = number of [ca] substrings that can be created
+frequency[3] = number of [cap] substrings that can be created
+frequency[4] = number of [capr] substrings that can be created
+frequency[5] = number of [capra] substrings that can be created
+
+Therefore in the "nof_occurrences" function, I iterate over the string K
+If the current letter is '?', the enitre frequency vector is updated.
+        frequency[j] = frequency[j] * multiplier + aux[j - 1]
+        frequency[0] = frequency[0] * multiplier
+Otherwise, I search for each apperance of the current letter in the string S
+and update the frequency vector.
+        frequency[j + 1] = frequency[j + 1] + aux[j]
+
+Complexity: O(n)
+
+
+
+
+
+
+
+
+
+
